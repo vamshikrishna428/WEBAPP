@@ -1,64 +1,33 @@
 package com.flipkart.testscript;
 
-import org.flikart.pom.AddToCart;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-import com.flipkart.genericutility.ExcelUtility;
-import com.flipkart.genericutility.FileUtility;
-import com.flipkart.genericutility.IConstants;
-import com.flipkart.genericutility.JSExecutorUtility;
-import com.flipkart.genericutility.JavaUtility;
-import com.flipkart.genericutility.WebDriverUtility;
+import com.flipkart.genericutility.BaseClass;
 
-public class SearchProduct {
+public class SearchProduct extends BaseClass {
 	
-	static WebDriver driver;
+	
 	 @Test
 	 public void searchProuct() throws InterruptedException {
-	
-		ExcelUtility excelutility=new ExcelUtility();
-		FileUtility fileutility=new FileUtility();
-		JavaUtility javautility=new JavaUtility();
-		JSExecutorUtility javascriptutility=new JSExecutorUtility();
-		WebDriverUtility webdriverutility=new WebDriverUtility();
-		
-		
-		System.out.println("");
-
-		AddToCart addtocart=new AddToCart(driver);
-		
-		// initialize the data from property file
-		fileutility.InitializePropertyFile(IConstants.FLIPKARTPROPERTYPATH);
-		excelutility.Initialize(IConstants.FLIPKARTEXCELPATH);
-		
-		// fetch the data from property file
-		String browser = fileutility.getDatafromPropertyFile("browser");
-		String url = fileutility.getDatafromPropertyFile("url");
-		String time = fileutility.getDatafromPropertyFile("timeouts");
-		long timeouts = javautility.ConvertStringToLong(time);
-
-		// launching the browser in the run time based on browser key
-		webdriverutility.setUpDriver(browser);
-		webdriverutility.MaximizeBrowser();
-		webdriverutility.WaitImplicitly(timeouts);
-		webdriverutility.geturl(url);
-		Thread.sleep(3000);
 		
 		addtocart.cancelMark();
-		String name = excelutility.getExcelData("Sheet1", 1, 1);
-		addtocart.searchTxBx(name);
-
-
-
 		
+		String name = excelutility.getExcelData("Sheet1", 0, 0);
+		addtocart.searchTxBx(name);
+		addtocart.searchIcon();
+		
+		addtocart.clickOnProduct();
 
-
-
-
-
-
+		String actual = addtocart.getWinterheaterText();
+		System.out.println(actual);
+		productpage.switchWindow(webdriverutility);
+		String expected = productpage.productInCart();
+		System.out.println("text " +expected);
 	}
+
+//	private String contains(String browser) {
+//		return browser;
+//	}
 }
 
 /*		WebDriverManager.chromedriver().setup();
