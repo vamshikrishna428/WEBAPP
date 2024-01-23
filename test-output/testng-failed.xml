@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="IccScenarios.Scenario1">
+      <class name="IccScenarios.Scenario4">
         <methods>
-          <include name="scenario1"/>
+          <include name="scenario4"/>
         </methods>
-      </class> <!-- IccScenarios.Scenario1 -->
+      </class> <!-- IccScenarios.Scenario4 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

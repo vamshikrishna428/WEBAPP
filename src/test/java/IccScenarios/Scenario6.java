@@ -24,7 +24,6 @@ public class Scenario6 {
 		profile.put("managed_default_content_settings", content);
 		preference.put("profile", profile);
 		
-		WebDriverManager.chromedriver().setup();
 		WebDriver driver=new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

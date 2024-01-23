@@ -14,7 +14,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Scenario5 {
 	@Test
 	public void scenario5() {
-		WebDriverManager.chromedriver().setup();
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
